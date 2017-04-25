@@ -22,7 +22,7 @@ class Adversary:
         for i in range(0, self.data_size):
             x = np.random.standard_normal(self.dimensions)
             m = np.sqrt((x*x).sum()) # norm of the vector x
-            r = np.random.randint(1, high=self.R) # upper bound of the vector ball
+            r = self.R*np.random.random() # upper bound of the vector ball
             x = r * x / m               # a random vector in the ball
             z = np.dot(self.model, x)    # the z value for this vector
             y = 4*logistic.cdf(z)           # the y value for this vector
